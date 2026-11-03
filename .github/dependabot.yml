@@ -1,0 +1,46 @@
+version: 2
+
+updates:
+  # Dependências npm do projeto
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+
+    open-pull-requests-limit: 5
+
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+
+    labels:
+      - "dependencies"
+      - "automated"
+
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  # Atualizações das GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+
+    open-pull-requests-limit: 5
+
+    labels:
+      - "dependencies"
+      - "ci-cd"
+      - "automated"
+
+    commit-message:
+      prefix: "ci"
+      include: "scope"
