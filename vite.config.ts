@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Ajusta os caminhos dos arquivos para funcionarem dentro do domínio do GitHub Pages
-  base: '/NOME_DO_SEU_REPOSITORIO/', 
+  base: '/Site/', 
   styles: {
     preprocessorOptions: {
       scss: {
