@@ -34,7 +34,7 @@ jobs:
           npm run build
 
       - name: Upload do artefato para o Pages
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist # Pasta padrão onde o Vite joga o build pronto
 
