@@ -1,0 +1,50 @@
+@import 'tokens';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font-sans;
+  background-color: $color-bg-dark;
+  color: $color-text-primary;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  transition: font-size 0.2s ease;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+// Global High Contrast Mode
+body.high-contrast {
+  background-color: $color-hc-bg !important;
+  color: $color-hc-text !important;
+
+  * {
+    background-color: transparent !important;
+    color: $color-hc-text !important;
+    border-color: $color-hc-border !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  button, input, select {
+    border: 2px solid $color-hc-border !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
