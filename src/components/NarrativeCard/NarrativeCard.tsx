@@ -1,16 +1,21 @@
-import React from 'react';
-import styles from './Hero.module.scss';
+import React, { ReactNode } from 'react';
+import styles from './NarrativeCard.module.scss';
 
-export const Hero: React.FC = () => {
+interface NarrativeCardProps {
+  title: string;
+  index: string;
+  children: ReactNode;
+}
+
+export const NarrativeCard: React.FC<NarrativeCardProps> = ({ title, index, children }) => {
   return (
-    <header className={styles.hero} role="banner">
+    <section className={styles.card} aria-labelledby={`title-${index}`}>
+      <div className={styles.indexBadge} aria-hidden="true">{index}</div>
+      <h2 id={`title-${index}`} className={styles.title}>{title}</h2>
       <div className={styles.content}>
-        <span className={styles.tag}>Física Moderna & Sustentabilidade</span>
-        <h1>Placas Fotovoltaicas</h1>
-        <p>Como transformar a radiação solar em energia elétrica pelo efeito fotoelétrico?</p>
-        <a href="#main-narrative" className={styles.cta}>Iniciar Jornada</a>
+        {children}
       </div>
-    </header>
+    </section>
   );
 };
 
