@@ -3,11 +3,17 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ] # Executa toda vez que você enviar código para a branch principal
+  workflow_dispatch: # Permite que você clique em um botão para rodar manualmente se quiser
 
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# Garante que builds antigos parem se você enviar um código novo em seguida
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -17,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configurar Node.js
-        uses: actions/identity/setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
@@ -28,9 +34,9 @@ jobs:
           npm run build
 
       - name: Upload do artefato para o Pages
-        uses: actions/pages-data-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # Pasta onde o Vite joga o site pronto
+          path: ./dist # Pasta padrão onde o Vite joga o build pronto
 
       - name: Deploy no GitHub Pages
         uses: actions/deploy-pages@v4
