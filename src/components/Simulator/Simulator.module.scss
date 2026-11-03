@@ -1,0 +1,84 @@
+@import '../../styles/tokens';
+
+.simulatorContainer {
+  background-color: lighten($color-surface-dark, 3%);
+  border-radius: $radius-md;
+  padding: 2rem;
+  border: 1px dashed rgba($color-sun-primary, 0.3);
+}
+
+.simTitle {
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.controlsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-text-secondary;
+  }
+
+  select {
+    background-color: $color-surface-dark;
+    color: white;
+    padding: 0.75rem;
+    border: 1px solid lighten($color-surface-dark, 10%);
+    border-radius: $radius-md;
+    cursor: pointer;
+    @include focus-visible;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    accent-color: $color-sun-primary;
+    cursor: pointer;
+  }
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.resultCard {
+  background-color: darken($color-surface-dark, 4%);
+  padding: 1.25rem;
+  border-radius: $radius-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .label {
+    font-size: 0.815rem;
+    color: $color-text-secondary;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: white;
+  }
+
+  .unit {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $color-text-secondary;
+  }
+}
+
