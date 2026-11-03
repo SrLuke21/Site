@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ] # Executa toda vez que você enviar código para a branch principal
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/identity/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependências e Compilar
+        run: |
+          npm install
+          npm run build
+
+      - name: Upload do artefato para o Pages
+        uses: actions/pages-data-artifact@v3
+        with:
+          path: ./dist # Pasta onde o Vite joga o site pronto
+
+      - name: Deploy no GitHub Pages
+        uses: actions/deploy-pages@v4
