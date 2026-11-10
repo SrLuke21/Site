@@ -9,6 +9,11 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "overrides": {
+    "@typescript-eslint/parser": {
+      "typescript": "$typescript"
+    }
+  }
   "dependencies": {
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
